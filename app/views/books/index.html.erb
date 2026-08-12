@@ -1,0 +1,13 @@
+<% content_for :page_title do %>
+<title>Books</title>
+<% end %>
+
+<h2>Library Books</h2>
+
+<p>
+
+<%= link_to "Add New Book", new_book_path %>
+
+</p>
+
+<%= render "book" %>

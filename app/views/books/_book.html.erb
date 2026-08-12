@@ -1,0 +1,36 @@
+<% @books.each do |book| %>
+
+<div>
+
+<h3>
+
+<%= book[:title] %>
+
+</h3>
+
+<p>
+
+Author:
+<%= book[:author] %>
+
+</p>
+
+<p>
+
+Category:
+<%= book[:category] %>
+
+</p>
+
+<p>
+
+Available:
+<%= book[:available] %>
+
+</p>
+
+</div>
+
+<hr>
+
+<% end %>

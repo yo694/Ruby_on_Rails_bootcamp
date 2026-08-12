@@ -1,0 +1,13 @@
+<h2>Books with Reviews</h2>
+
+<% @books.each do |book| %>
+
+  <h3><%= book.title %></h3>
+
+  <ul>
+    <% book.reviews.each do |review| %>
+      <li><%= review.comment %></li>
+    <% end %>
+  </ul>
+
+<% end %>

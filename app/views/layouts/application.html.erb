@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library App</title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= yield :page_title %>
+
+</head>
+
+<body>
+
+<%= render "shared/navbar" %>
+
+<hr>
+
+<%= flash[:notice] %>
+<%= flash[:alert] %>
+
+<hr>
+
+<%= yield %>
+
+<hr>
+
+<%= render "shared/footer" %>
+
+</body>
+</html>
