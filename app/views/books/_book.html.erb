@@ -1,36 +1,32 @@
 <% @books.each do |book| %>
 
-<div>
+  <% cache ["book-fragment", book[:id]] do %>
 
-<h3>
+    <div>
 
-<%= book[:title] %>
+      <h3>
+        <%= book[:title] %>
+      </h3>
 
-</h3>
+      <p>
+        Author:
+        <%= book[:author] %>
+      </p>
 
-<p>
+      <p>
+        Category:
+        <%= book[:category] %>
+      </p>
 
-Author:
-<%= book[:author] %>
+      <p>
+        Available:
+        <%= book[:available] %>
+      </p>
 
-</p>
+    </div>
 
-<p>
+    <hr>
 
-Category:
-<%= book[:category] %>
-
-</p>
-
-<p>
-
-Available:
-<%= book[:available] %>
-
-</p>
-
-</div>
-
-<hr>
+  <% end %>
 
 <% end %>

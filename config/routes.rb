@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "/books", to: "books#index"
 
+  get "/books/http_cache_demo", to: "books#http_cache_demo"
+
   # Books
   resources :books do
 

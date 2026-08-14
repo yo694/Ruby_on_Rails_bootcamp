@@ -77,6 +77,11 @@ class BooksController < ApplicationController
       book_ids: @book_ids
     }.inspect
   end
+
+  def http_cache_demo
+    @books = Book.all
+    fresh_when etag: @books
+  end
     
 
   private
@@ -111,5 +116,6 @@ class BooksController < ApplicationController
   def books_with_reviews
     @books = Book.includes(:reviews)
   end
+  
   
 end

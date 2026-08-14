@@ -1,0 +1,28 @@
+<% Rails.logger.info "RUSSIAN DOLL CACHE DEMO START" %>
+<h2>Books with Reviews</h2>
+
+<% @books.each do |book| %>
+
+  <% cache ["book-with-reviews", book] do %>
+
+    <h3><%= book.title %></h3>
+
+    <ul>
+      <% book.reviews.each do |review| %>
+
+        <% cache ["review", review] do %>
+          <li><%= review.comment %></li>
+        <% end %>
+
+      <% end %>
+    </ul>
+
+  <% end %>
+
+<% end %>
+
+<hr>
+
+<h3>Cache Debug</h3>
+
+<%= Rails.cache.instance_variable_get(:@data).keys.inspect %>
