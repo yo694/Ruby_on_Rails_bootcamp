@@ -1,95 +1,97 @@
-<% content_for :page_title do %>
-  <title>New Book</title>
-<% end %>
+<%= turbo_frame_tag "book_form" do %>
 
-<h2>Add New Book</h2>
+  <% content_for :page_title do %>
+    <title>New Book</title>
+  <% end %>
 
-<% if @book && @book.errors.any? %>
-  <div>
-    <h3>Validation Errors</h3>
+  <h2>Add New Book</h2>
 
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @book && @book.errors.any? %>
+    <div>
+      <h3>Validation Errors</h3>
 
-<%= form_with model: @book, local: true do |form| %>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
-
-  <br>
-
-  <div>
-    <%= form.label :author %><br>
-    <%= form.text_field :author %>
-  </div>
-
-  <br>
-  <div>
-
-  <%= form.label :price %><br>
-
-  <%= form.number_field :price %>
-
-</div>
-
-<br>
-
-  <div>
-    <%= form.label :category %><br>
-
-    <%= form.select :category,
-      [
-        "Programming",
-        "Novel",
-        "History",
-        "Science"
-      ]
-    %>
-  </div>
-
-  <br>
-
-  <div>
-    <%= form.label :available %>
-    <%= form.check_box :available %>
-  </div>
-
-  <br>
-
-  <div>
-    <%= form.label :ebook_available, "E-Book Available" %>
-    <%= form.check_box :ebook_available %>
-  </div>
-
-  <br>
-
-  <h3>Review Details</h3>
-
-  <%= form.fields_for :reviews do |review_form| %>
+  <%= form_with model: @book, local: true do |form| %>
 
     <div>
-      <%= review_form.label :rating %><br>
-      <%= review_form.number_field :rating %>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
     </div>
 
     <br>
 
     <div>
-      <%= review_form.label :comment %><br>
-      <%= review_form.text_area :comment %>
+      <%= form.label :author %><br>
+      <%= form.text_field :author %>
     </div>
 
+    <br>
+
+    <div>
+      <%= form.label :price %><br>
+      <%= form.number_field :price %>
+    </div>
+
+    <br>
+
+    <div>
+      <%= form.label :category %><br>
+
+      <%= form.select :category,
+        [
+          "Programming",
+          "Novel",
+          "History",
+          "Science"
+        ]
+      %>
+    </div>
+
+    <br>
+
+    <div>
+      <%= form.label :available %>
+      <%= form.check_box :available %>
+    </div>
+
+    <br>
+
+    <div>
+      <%= form.label :ebook_available, "E-Book Available" %>
+      <%= form.check_box :ebook_available %>
+    </div>
+
+    <br>
+
+    <h3>Review Details</h3>
+
+    <%= form.fields_for :reviews do |review_form| %>
+
+      <div>
+        <%= review_form.label :rating %><br>
+        <%= review_form.number_field :rating %>
+      </div>
+
+      <br>
+
+      <div>
+        <%= review_form.label :comment %><br>
+        <%= review_form.text_area :comment %>
+      </div>
+
+    <% end %>
+
+    <br>
+
+    <%= form.submit "Save Book" %>
+
   <% end %>
-
-  <br>
-
-  <%= form.submit "Save Book" %>
 
 <% end %>

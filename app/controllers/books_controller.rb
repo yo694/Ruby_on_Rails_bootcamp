@@ -25,12 +25,17 @@ class BooksController < ApplicationController
     @book.reviews.build
   end
   def create
-    @book =Book.new(book_params)
+    @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = "Book added successfully."
-      redirect_to books_path
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Book added successfully."
+          redirect_to books_path
+        end
+        format.turbo_stream
+      end
     else
-      render :new,status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -76,6 +81,9 @@ class BooksController < ApplicationController
       book_titles: @book_titles,
       book_ids: @book_ids
     }.inspect
+  end
+
+  def stimulus_demo
   end
 
   def http_cache_demo

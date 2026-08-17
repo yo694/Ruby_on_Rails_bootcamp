@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get "/books/http_cache_demo", to: "books#http_cache_demo"
 
+  get "/books/stimulus_demo", to: "books#stimulus_demo"
+
   # Books
   resources :books do
 

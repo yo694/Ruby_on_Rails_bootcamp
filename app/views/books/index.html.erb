@@ -1,13 +1,19 @@
 <% content_for :page_title do %>
-<title>Books</title>
+  <title>Books</title>
 <% end %>
 
 <h2>Library Books</h2>
 
-<p>
+<%= turbo_frame_tag "book_form" do %>
+  <p>
+    <%= link_to "Add New Book", new_book_path %>
+  </p>
+<% end %>
 
-<%= link_to "Add New Book", new_book_path %>
+<%= turbo_frame_tag "books" do %>
 
-</p>
+  <% @books.each do |book| %>
+    <%= render "book", book: book %>
+  <% end %>
 
-<%= render "book" %>
+<% end %>

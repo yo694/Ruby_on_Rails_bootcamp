@@ -6,26 +6,27 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= yield :page_title %>
+  <%= javascript_importmap_tags %>
 
+  <%= yield :page_title %>
 </head>
 
 <body>
 
-<%= render "shared/navbar" %>
+  <%= render "shared/navbar" %>
 
-<hr>
+  <hr>
 
-<%= flash[:notice] %>
-<%= flash[:alert] %>
+  <%= flash[:notice] %>
+  <%= flash[:alert] %>
 
-<hr>
+  <hr>
 
-<%= yield %>
+  <%= yield %>
 
-<hr>
+  <hr>
 
-<%= render "shared/footer" %>
+  <%= render "shared/footer" %>
 
 </body>
 </html>
