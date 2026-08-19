@@ -1,0 +1,17 @@
+<%= turbo_stream.update "flash" do %>
+  <% flash.each do |type, message| %>
+    <div class="flash <%= type %>"><%= message %></div>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.append "books" do %>
+  <%= render "book", book: @book %>
+<% end %>
+
+<%= turbo_stream.replace "book_form" do %>
+  <%= turbo_frame_tag "book_form" do %>
+    <p>
+      <%= link_to "Add New Book", new_book_path %>
+    </p>
+  <% end %>
+<% end %>

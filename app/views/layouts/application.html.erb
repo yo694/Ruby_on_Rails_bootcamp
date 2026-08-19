@@ -17,8 +17,11 @@
 
   <hr>
 
-  <%= flash[:notice] %>
-  <%= flash[:alert] %>
+  <div id="flash">
+    <% flash.each do |type, message| %>
+      <div class="flash <%= type %>"><%= message %></div>
+    <% end %>
+  </div>
 
   <hr>
 

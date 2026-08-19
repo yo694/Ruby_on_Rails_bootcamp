@@ -26,13 +26,18 @@ class BooksController < ApplicationController
   end
   def create
     @book = Book.new(book_params)
+
     if @book.save
       respond_to do |format|
         format.html do
-          flash[:notice] = "Book added successfully."
-          redirect_to books_path
+          redirect_to books_path,
+                      notice: "Book added successfully.",
+                      status: :see_other
         end
-        format.turbo_stream
+
+        format.turbo_stream do
+          flash.now[:notice] = "Book added successfully."
+        end
       end
     else
       render :new, status: :unprocessable_entity
